@@ -79,4 +79,15 @@ public class Product {
         Random rand = new Random();
         return rand.nextInt(1000);
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", vat=" + vat +
+                '}';
+    }
 }
