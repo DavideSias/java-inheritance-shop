@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class Cart {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Product[] cart = new Product[1];
+        Product[] cart = new Product[3];
+        BigDecimal totalCart = new BigDecimal("0");
 
         /* test print products
         Smartphone iphone = new Smartphone("iphone", "smartphone apple",priceInput, vatInput, imeiInput, 32);
@@ -44,6 +45,7 @@ public class Cart {
                     System.out.print("Memoria dispositivo: ");
                     int memoryInput = Integer.parseInt(scan.nextLine());
                     cart[i] = new Smartphone(nameInput, descriptionInput, priceInput, vatInput, imeiInput, memoryInput);
+                    // System.out.println(cart[i].getDiscountedPrice());
                     break;
                 case "2":
                     System.out.print("Dimensioni: ");
@@ -51,6 +53,7 @@ public class Cart {
                     System.out.print("Smart tv(s/n): ");
                     boolean smartInput = scan.nextLine().equalsIgnoreCase("s");
                     cart[i] = new Television(nameInput, descriptionInput, priceInput, vatInput, dimensionInput, smartInput);
+                    // System.out.println(cart[i].getDiscountedPrice());
                     break;
                 case "3":
                     System.out.print("Colore: ");
@@ -58,15 +61,18 @@ public class Cart {
                     System.out.print("Wireless(s/n): ");
                     boolean wirelessInput = scan.nextLine().equalsIgnoreCase("s");
                     cart[i] = new Headphone(nameInput, descriptionInput, priceInput, vatInput, colorInput, wirelessInput);
+                    // System.out.println(cart[i].getDiscountedPrice());
                     break;
                 default:
                     System.out.println("Scelta non valida");
                     break;
             }
+            totalCart = totalCart.add(cart[i].getDiscountedPrice());
         }
 
         System.out.println(Arrays.toString(cart));
-        System.out.println(cart[0].getDiscountedPrice());
+        System.out.println("totale carrello: " + totalCart);
+        // System.out.println(cart[0].getDiscountedPrice());
 
         scan.close();
     }

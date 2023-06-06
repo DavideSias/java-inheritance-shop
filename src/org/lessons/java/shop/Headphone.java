@@ -2,7 +2,7 @@ package org.lessons.java.shop;
 
 import java.math.BigDecimal;
 
-public class Headphone extends Product{
+public class Headphone extends Product {
     private String color;
     private boolean wireless;
 
@@ -18,5 +18,17 @@ public class Headphone extends Product{
                 "color='" + color + '\'' +
                 ", wireless=" + wireless +
                 "} " + super.toString();
+    }
+
+    @Override
+    public BigDecimal getDiscountedPrice() {
+        if (!this.wireless) {
+            BigDecimal discount = new BigDecimal("0.07");
+            BigDecimal fullPrice = getFullPrice();
+            BigDecimal discountValue = fullPrice.multiply(discount);
+            return fullPrice.subtract(discountValue);
+        } else {
+            return super.getDiscountedPrice();
+        }
     }
 }

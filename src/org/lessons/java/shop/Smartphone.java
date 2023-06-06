@@ -2,7 +2,7 @@ package org.lessons.java.shop;
 
 import java.math.BigDecimal;
 
-public class Smartphone extends Product{
+public class Smartphone extends Product {
     private BigDecimal imei;
     private int memory;
 
@@ -18,5 +18,17 @@ public class Smartphone extends Product{
                 "imei=" + imei +
                 ", memory=" + memory +
                 "} " + super.toString();
+    }
+
+    @Override
+    public BigDecimal getDiscountedPrice() {
+        if (this.memory < 32) {
+            BigDecimal discount = new BigDecimal("0.05");
+            BigDecimal fullPrice = getFullPrice();
+            BigDecimal discountValue = fullPrice.multiply(discount);
+            return fullPrice.subtract(discountValue);
+        } else {
+            return super.getDiscountedPrice();
+        }
     }
 }

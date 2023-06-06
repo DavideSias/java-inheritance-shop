@@ -2,7 +2,7 @@ package org.lessons.java.shop;
 
 import java.math.BigDecimal;
 
-public class Television extends Product{
+public class Television extends Product {
     private int dimension;
     private boolean smartTv;
 
@@ -18,5 +18,17 @@ public class Television extends Product{
                 "dimension=" + dimension +
                 ", smartTv=" + smartTv +
                 "} " + super.toString();
+    }
+
+    @Override
+    public BigDecimal getDiscountedPrice() {
+        if (!this.smartTv) {
+            BigDecimal discount = new BigDecimal("0.1");
+            BigDecimal fullPrice = getFullPrice();
+            BigDecimal discountValue = fullPrice.multiply(discount);
+            return fullPrice.subtract(discountValue);
+        } else {
+            return super.getDiscountedPrice();
+        }
     }
 }
