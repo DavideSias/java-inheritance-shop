@@ -9,6 +9,7 @@ public class Cart {
         Scanner scan = new Scanner(System.in);
         Product[] cart = new Product[3];
         BigDecimal totalCart = new BigDecimal("0");
+        boolean fidelity = false;
 
         /* test print products
         Smartphone iphone = new Smartphone("iphone", "smartphone apple",priceInput, vatInput, imeiInput, 32);
@@ -17,6 +18,9 @@ public class Cart {
         System.out.println(iphone);
         System.out.println(samsung);
         System.out.println(sony);*/
+
+        System.out.println("Hai una carta fedeltà? (s/n)");
+        fidelity = scan.nextLine().equalsIgnoreCase("s");
 
         for (int i = 0; i < cart.length; i++) {
 
@@ -67,7 +71,12 @@ public class Cart {
                     System.out.println("Scelta non valida");
                     break;
             }
-            totalCart = totalCart.add(cart[i].getDiscountedPrice());
+
+            if (fidelity) {
+                totalCart = totalCart.add(cart[i].getDiscountedPrice());
+            } else {
+                totalCart = totalCart.add(cart[i].getFullPrice());
+            }
         }
 
         System.out.println(Arrays.toString(cart));
