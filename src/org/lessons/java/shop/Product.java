@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Product {
 
+    private final BigDecimal DISCOUNT = new BigDecimal("0.02");
     // FIELDS
     private int code;
     private String name;
@@ -78,6 +79,12 @@ public class Product {
     private int generateCode() {
         Random rand = new Random();
         return rand.nextInt(1000);
+    }
+
+    public BigDecimal getDiscountedPrice() {
+        BigDecimal fullPrice = getFullPrice();
+        BigDecimal discount = fullPrice.multiply(DISCOUNT);
+        return fullPrice.subtract(discount);
     }
 
     @Override

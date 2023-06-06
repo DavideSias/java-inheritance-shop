@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Cart {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Product[] cart = new Product[3];
+        Product[] cart = new Product[1];
 
         /* test print products
         Smartphone iphone = new Smartphone("iphone", "smartphone apple",priceInput, vatInput, imeiInput, 32);
@@ -42,12 +42,12 @@ public class Cart {
                     String imeiStr = scan.nextLine();
                     BigDecimal imeiInput = new BigDecimal(imeiStr);
                     System.out.print("Memoria dispositivo: ");
-                    int memoryInput = scan.nextInt();
+                    int memoryInput = Integer.parseInt(scan.nextLine());
                     cart[i] = new Smartphone(nameInput, descriptionInput, priceInput, vatInput, imeiInput, memoryInput);
                     break;
                 case "2":
                     System.out.print("Dimensioni: ");
-                    int dimensionInput = scan.nextInt();
+                    int dimensionInput = Integer.parseInt(scan.nextLine());
                     System.out.print("Smart tv(s/n): ");
                     boolean smartInput = scan.nextLine().equalsIgnoreCase("s");
                     cart[i] = new Television(nameInput, descriptionInput, priceInput, vatInput, dimensionInput, smartInput);
@@ -66,6 +66,7 @@ public class Cart {
         }
 
         System.out.println(Arrays.toString(cart));
+        System.out.println(cart[0].getDiscountedPrice());
 
         scan.close();
     }
