@@ -12,6 +12,22 @@ public class Smartphone extends Product {
         this.memory = memory;
     }
 
+    public BigDecimal getImei() {
+        return imei;
+    }
+
+    public void setImei(BigDecimal imei) {
+        this.imei = imei;
+    }
+
+    public int getMemory() {
+        return memory;
+    }
+
+    public void setMemory(int memory) {
+        this.memory = memory;
+    }
+
     @Override
     public String toString() {
         return "Smartphone{" +

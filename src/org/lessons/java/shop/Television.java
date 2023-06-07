@@ -12,6 +12,22 @@ public class Television extends Product {
         this.smartTv = smartTv;
     }
 
+    public int getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(int dimension) {
+        this.dimension = dimension;
+    }
+
+    public boolean isSmartTv() {
+        return smartTv;
+    }
+
+    public void setSmartTv(boolean smartTv) {
+        this.smartTv = smartTv;
+    }
+
     @Override
     public String toString() {
         return "Television{" +

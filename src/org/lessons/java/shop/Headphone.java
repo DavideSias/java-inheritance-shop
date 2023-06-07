@@ -12,6 +12,22 @@ public class Headphone extends Product {
         this.wireless = wireless;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public boolean isWireless() {
+        return wireless;
+    }
+
+    public void setWireless(boolean wireless) {
+        this.wireless = wireless;
+    }
+
     @Override
     public String toString() {
         return "Headphone{" +

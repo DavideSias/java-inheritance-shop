@@ -11,21 +11,15 @@ public class Cart {
         BigDecimal totalCart = new BigDecimal("0");
         boolean fidelity = false;
 
-        /* test print products
-        Smartphone iphone = new Smartphone("iphone", "smartphone apple",priceInput, vatInput, imeiInput, 32);
-        Television samsung = new Television("samsung TV", "samsung tv",priceInput, vatInput, 100, true);
-        Headphone sony = new Headphone("sony headphone", "headphone",priceInput, vatInput, "black", false);
-        System.out.println(iphone);
-        System.out.println(samsung);
-        System.out.println(sony);*/
-
         System.out.println("Hai una carta fedeltà? (s/n)");
         fidelity = scan.nextLine().equalsIgnoreCase("s");
 
         for (int i = 0; i < cart.length; i++) {
-
-            System.out.print("Che prodotto vuoi inserire? 1 - Smartphone; 2 - Tv; 3 - Cuffie: ");
-            String choice = scan.nextLine();
+            int choice;
+            do {
+                System.out.print("Che prodotto vuoi inserire? 1 - Smartphone; 2 - Tv; 3 - Cuffie: ");
+                choice = Integer.parseInt(scan.nextLine());
+            } while (choice < 1 || choice > 3);
 
             System.out.print("Nome prodotto: ");
             String nameInput = scan.nextLine();
@@ -42,7 +36,7 @@ public class Cart {
             BigDecimal vatInput = new BigDecimal(vatStr);
 
             switch (choice) {
-                case "1":
+                case 1:
                     System.out.print("Codice imei: ");
                     String imeiStr = scan.nextLine();
                     BigDecimal imeiInput = new BigDecimal(imeiStr);
@@ -51,7 +45,7 @@ public class Cart {
                     cart[i] = new Smartphone(nameInput, descriptionInput, priceInput, vatInput, imeiInput, memoryInput);
                     // System.out.println(cart[i].getDiscountedPrice());
                     break;
-                case "2":
+                case 2:
                     System.out.print("Dimensioni: ");
                     int dimensionInput = Integer.parseInt(scan.nextLine());
                     System.out.print("Smart tv(s/n): ");
@@ -59,7 +53,7 @@ public class Cart {
                     cart[i] = new Television(nameInput, descriptionInput, priceInput, vatInput, dimensionInput, smartInput);
                     // System.out.println(cart[i].getDiscountedPrice());
                     break;
-                case "3":
+                case 3:
                     System.out.print("Colore: ");
                     String colorInput = scan.nextLine();
                     System.out.print("Wireless(s/n): ");
@@ -67,9 +61,9 @@ public class Cart {
                     cart[i] = new Headphone(nameInput, descriptionInput, priceInput, vatInput, colorInput, wirelessInput);
                     // System.out.println(cart[i].getDiscountedPrice());
                     break;
-                default:
+                /*default:
                     System.out.println("Scelta non valida");
-                    break;
+                    break;*/
             }
 
             if (fidelity) {
